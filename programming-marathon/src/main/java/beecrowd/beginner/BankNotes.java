@@ -20,17 +20,25 @@ public class BankNotes {
 
     private static List<Integer> notes = List.of(100, 50, 20, 10, 5, 2, 1);
 
+
     public static void main(String args[]){
 
         Scanner scanner = new Scanner(System.in);
 
         var value = scanner.nextInt();
 
+        System.out.println(value);
+        for (int i = 0; i < notes.size(); i++){
+            var quantity = value / notes.get(i);
 
+            if(quantity >= 1){
+                value = value % notes.get(i);
+                System.out.println(quantity + " nota(s) de R$ "+ notes.get(i) +",00");
+            }else{
+                quantity = 0;
+                System.out.println(quantity + " nota(s) de R$ "+ notes.get(i) +",00");
+            }
+        }
 
-    }
-
-    private static void output(int quantity, int value){
-        System.out.println(quantity + " nota(s) de R$ "+ value +",00");
     }
 }
