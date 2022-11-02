@@ -22,24 +22,66 @@ public class SimpleSort {
         int N3 = scanner.nextInt();
 
         int[] numbers = new int[]{N1, N2, N3};
-        int[] numbersClone = numbers.clone();
-        int aux;
 
-        for(int i = 0; i < numbersClone.length; i++){
-            for(int x = i+1; x < numbersClone.length; x++){
-                if(numbersClone[i] > numbersClone[x]){
-                    aux = numbersClone[i];
-                    numbersClone[i] = numbersClone[x];
-                    numbersClone[x] = aux;
+        int[] vector = new int[]{6,3,4,5,2,7,1,9,8,0};
+
+        System.out.println("Simple Sort: ");
+        simpleSort(numbers.clone());
+        System.out.println();
+        print(numbers);
+
+        int[] clone = numbers.clone();
+        quickSort(clone, 0, clone.length-1);
+        System.out.println();
+        System.out.println("Quick Sort: ");
+        print(clone);
+    }
+
+    private static void simpleSort(int[] numbers) {
+        int aux;
+        for(int i = 0; i < numbers.length; i++){
+            for(int x = i+1; x < numbers.length; x++){
+                if(numbers[i] > numbers[x]){
+                    aux = numbers[i];
+                    numbers[i] = numbers[x];
+                    numbers[x] = aux;
                 }
             }
         }
-
-        print(numbersClone);
-
-        System.out.println();
-
         print(numbers);
+
+    }
+
+    private static void quickSort(int[] vector, int left, int rigth){
+        if(left < rigth){
+            int pivot = partition(vector, left, rigth); // 6
+            quickSort(vector, left, pivot-1); // v, 0, 5
+            quickSort(vector, pivot+1, rigth);
+
+        }
+    }
+    private static int partition(int[] vector, int left, int rigth) {
+        int i = left + 1;
+        int j = rigth;
+        int pivot = vector[left];
+
+        while(i <= j){
+            if(vector[i] <= pivot) i++;
+            else if (vector[j] > pivot) j--;
+            else if (i <= j) {
+                trocar(vector, i, j);
+                i++;
+                j--;
+            }
+        }
+        trocar(vector, left, j);
+        return j;
+    }
+
+    private static void trocar(int[] vector, int i, int j) {
+        int aux = vector[i];
+        vector[i] = vector[j];
+        vector[j] = aux;
     }
 
     private static void print(int[] vector){
