@@ -28,9 +28,9 @@ public class Triangle {
         double C = scanner.nextDouble();
         double perimeter, area;
 
-        if(((A > Math.abs(B - C)) && (A < (B + C)))
-                || ((B > Math.abs(A - C)) && (B < (A + C)))
-                || ((C > Math.abs(A - B)) && (C < (A + B)))
+        if(checksSideA(A, B, C)
+                || checksSideB(A, B, C)
+                || checksSideC(A, B, C)
         ){
             perimeter = A + B + C;
             System.out.println(String.format("Perimetro = %.1f", perimeter));
@@ -38,5 +38,17 @@ public class Triangle {
             area = ((A + B) * C)/2;
             System.out.println(String.format("Area = %.1f", area));
         }
+    }
+
+    private static boolean checksSideC(double A, double B, double C) {
+        return (C > Math.abs(A - B)) && (C < (A + B));
+    }
+
+    private static boolean checksSideB(double A, double B, double C) {
+        return (B > Math.abs(A - C)) && (B < (A + C));
+    }
+
+    private static boolean checksSideA(double A, double B, double C) {
+        return (A > Math.abs(B - C)) && (A < (B + C));
     }
 }
