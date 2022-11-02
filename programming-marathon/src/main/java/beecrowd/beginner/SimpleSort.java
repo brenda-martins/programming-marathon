@@ -35,14 +35,16 @@ public class SimpleSort {
             }
         }
 
-        for(int i = 0; i < numbersClone.length; i++) {
-            System.out.println(numbersClone[i]);
-        }
+        print(numbersClone);
+
         System.out.println();
 
-        for(int i = 0; i < numbers.length; i++) {
-            System.out.println(numbers[i]);
-        }
+        print(numbers);
+    }
 
+    private static void print(int[] vector){
+        for(int i = 0; i < vector.length; i++) {
+            System.out.println(vector[i]);
+        }
     }
 }
