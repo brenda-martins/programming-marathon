@@ -32,50 +32,37 @@ public class SalaryIncrease {
         Scanner scanner = new Scanner(System.in);
 
         var salary = scanner.nextDouble();
-        double newSalary, moneyEarned, percentage;
 
         if(salary > 0.0 && salary <= 400.00){
-            percentage = 15/100.00;
-            newSalary  = salary + (salary * percentage);
-            moneyEarned = salary * percentage;
-
-            System.out.println(String.format("Novo salario: %.2f", newSalary));
-            System.out.println(String.format("Reajuste ganho: %.2f", moneyEarned));
-            System.out.println("Em percentual: 15 %");
+            double percentage = 15.0/100;
+            calculateSalaryIncrease(salary, percentage, "15 %");
         }else if(salary >= 400.01 && salary <= 800){
-            percentage = 12/100.00;
-            newSalary  = salary + (salary * percentage);
-            moneyEarned = salary * percentage;
-
-            System.out.println(String.format("Novo salario: %.2f", newSalary));
-            System.out.println(String.format("Reajuste ganho: %.2f", moneyEarned));
-            System.out.println("Em percentual: 12 %");
+            double percentage = 12.0/100;
+            calculateSalaryIncrease(salary, percentage, "12 %");
         } else if (salary >= 800.01 && salary <= 1200) {
-            percentage = 10/100.00;
-            newSalary  = salary + (salary * percentage);
-            moneyEarned = salary * percentage;
-
-            System.out.println(String.format("Novo salario: %.2f", newSalary));
-            System.out.println(String.format("Reajuste ganho: %.2f", moneyEarned));
-            System.out.println("Em percentual: 10 %");
+            double percentage = 10.0/100;
+            calculateSalaryIncrease(salary, percentage, "10 %");
         }else if (salary >= 1200.01 && salary <= 2000){
-            percentage = 7/100.00;
-            newSalary  = salary + (salary * percentage);
-            moneyEarned = salary * percentage;
-
-            System.out.println(String.format("Novo salario: %.2f", newSalary));
-            System.out.println(String.format("Reajuste ganho: %.2f", moneyEarned));
-            System.out.println("Em percentual: 7 %");
+            double percentage = 7.0/100;
+            calculateSalaryIncrease(salary, percentage, "7 %");
         }else{
-            percentage = 4/100.00;
-            newSalary  = salary + (salary * percentage);
-            moneyEarned = salary * percentage;
-
-            System.out.println(String.format("Novo salario: %.2f", newSalary));
-            System.out.println(String.format("Reajuste ganho: %.2f", moneyEarned));
-            System.out.println("Em percentual: 4 %");
+            double percentage = 4.0/100;
+            calculateSalaryIncrease(salary, percentage, "4 %");
         }
+    }
 
+    private static void calculateSalaryIncrease(
+            final double salary,
+            final double percentage,
+            final String percentageString
+    ) {
+        double newSalary;
+        double moneyEarned;
+        newSalary  = salary + (salary * percentage);
+        moneyEarned = salary * percentage;
 
+        System.out.println(String.format("Novo salario: %.2f", newSalary));
+        System.out.println(String.format("Reajuste ganho: %.2f", moneyEarned));
+        System.out.println("Em percentual: " + percentageString);
     }
 }
